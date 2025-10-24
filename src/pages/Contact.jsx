@@ -6,7 +6,7 @@ import ContactUs from '../components/ContactUs'
 const Contact = () => {
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
       <MobileBottomNav/>
       <ContactUs />
 

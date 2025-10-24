@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CommentList from "./CommentList";
 import AddCommentForm from "./AddCommentForm";
 import { fetchCommentsByProduct } from "../api/comments";
+import ProductRatingSummary from "./ProductRatingSummary";
 
 export default function CommentSection({ productId }) {
   // fetching comments from product Id
@@ -23,15 +24,16 @@ export default function CommentSection({ productId }) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="mt-10 bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-md">
-      <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-        Comments
-      </h2>
+    <div className="mt-10  dark:bg-gray-800 p-6 rounded-2xl">
+    
 
       {loading ? (
         <p className="text-gray-500 italic">Loading comments...</p>
       ) : (
+        <>
+        <ProductRatingSummary comments={comments} />
         <CommentList comments={comments} />
+        </>
       )}
 
       {/* Toggle button */}

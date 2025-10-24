@@ -7,9 +7,12 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import Category from "./pages/Category";
+import ScrollToTop from "./components/ScrollToTop";
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />

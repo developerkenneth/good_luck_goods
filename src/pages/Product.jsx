@@ -4,6 +4,10 @@ import Slider from "react-slick";
 import { FaArrowLeft, FaShoppingCart, FaCheck } from "react-icons/fa";
 import { CartContext } from "../context/CartContext";
 import CommentsSection from "../components/CommentsSection";
+import CheckoutModal from "../components/CheckoutModal";
+import ProductModal from "../components/ProductModal";
+import ProductRatingSummary from "../components/ProductRatingSummary";
+
 
 const Product = () => {
   const { slug } = useParams();
@@ -13,6 +17,8 @@ const Product = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [showProductModal, setShowProductModal] =useState(false);
+  
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -64,12 +70,6 @@ const Product = () => {
 
   const images = [product.main_image, product.image2, product.image3].filter(Boolean);
 
-  // Modal close confirmation
-  const closeModal = () => {
-    if (confirm("Are you sure you want to close this form?")) {
-      setShowModal(false);
-    }
-  };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -120,7 +120,7 @@ const Product = () => {
 
           <div className="flex gap-4 mt-6">
             <button
-              onClick={() => addToCart(product)}
+              onClick={() => setShowProductModal(true)}
               className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition-all"
             >
               <FaShoppingCart /> Add to Cart
@@ -130,108 +130,40 @@ const Product = () => {
               onClick={() => setShowModal(true)}
               className="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all"
             >
-              <FaCheck /> Checkout
+              <FaCheck /> Place Order on Whatsapp
             </button>
           </div>
         </div>
       </div>
 
+{/* rating section */}
+
       {/* comments */}
 
         <CommentsSection productId={product.id} />
+
+        {/* product modal */}
+
+        {/* Use modal component */}
+              {showProductModal && (
+                <ProductModal
+                  product={product}
+                  onClose={() => setShowProductModal(false)}
+                  onAddToCart={addToCart}
+                />
+              )}
       {/* Checkout Modal */}
-      {showModal && <CheckoutModal onClose={closeModal} product={product} />}
+      {showModal && <CheckoutModal 
+      onClose={()=>setShowModal(false)} 
+      cartItems={[product]}
+      subtotal={Number(product.price)}
+      isSingle={true}
+ />}
 
 
     </div>
   );
 };
 
-// 🧾 Modal Component
-const CheckoutModal = ({ onClose, product }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-  });
-
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const message = `Hello! I want to order the following:\n\n🛍️ *Product:* ${product.name}\n💰 *Price:* ₦${Number(product.price).toLocaleString()}\n📦 *Quantity:* 1\n\n📋 *Customer Info:*\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nAddress: ${formData.address}`;
-
-    const whatsappLink = `https://wa.me/234XXXXXXXXXX?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsappLink, "_blank");
-  };
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 w-full max-w-md relative animate-fadeIn">
-        <h2 className="text-2xl font-bold mb-4 text-center text-primary">
-          Checkout Details
-        </h2>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            name="name"
-            placeholder="Full Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary"
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary"
-          />
-          <input
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary"
-          />
-          <textarea
-            name="address"
-            placeholder="Delivery Address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-            rows={3}
-            className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary"
-          ></textarea>
-
-          <div className="flex justify-between items-center mt-6">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 bg-gray-300 dark:bg-gray-600 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2"
-            >
-              <FaCheck /> Confirm & Chat
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
 
 export default Product;

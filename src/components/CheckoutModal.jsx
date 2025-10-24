@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-export default function CheckoutModal({ cartItems, subtotal, onClose }) {
+export default function CheckoutModal({ cartItems, subtotal, onClose, isSingle = false }) {
+
+  console.log(cartItems);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -10,31 +13,21 @@ export default function CheckoutModal({ cartItems, subtotal, onClose }) {
     address: "",
   });
 
+  const [selectedColor, setSelectedColor] = useState("");
   const [confirmClose, setConfirmClose] = useState(false);
 
-  // Load user data from localStorage
+  // Load saved user info
   useEffect(() => {
     const saved = localStorage.getItem("checkoutUser");
     if (saved) setForm(JSON.parse(saved));
   }, []);
 
-  // Save user data when it changes
+  // Save user info
   useEffect(() => {
     localStorage.setItem("checkoutUser", JSON.stringify(form));
   }, [form]);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  useEffect(() => {
-    const saved = localStorage.getItem("checkoutUser");
-    if (saved) setForm(JSON.parse(saved));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("checkoutUser", JSON.stringify(form));
-  }, [form]);
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,16 +36,21 @@ export default function CheckoutModal({ cartItems, subtotal, onClose }) {
       `🛒 *New Order Received* \n\n` +
         `👤 *Name:* ${form.name}\n📧 *Email:* ${form.email}\n📞 *Phone:* ${form.phone}\n🏠 *Address:* ${form.address}\n\n` +
         `🛍️ *Order Details:*\n${cartItems
-          .map(
-            (item) =>
-              `• ${item.name} - ${item.qty} × ₦${Number(item.price).toFixed(
-                2
-              )} = ₦${(Number(item.price) * item.qty).toFixed(2)}`
-          )
+          .map((item) => {
+            let colorDisplay = "";
+
+            // Show color from selection or existing item
+            if (isSingle && selectedColor) colorDisplay = ` (${selectedColor})`;
+            else if (item.selectedColor) colorDisplay = ` (${item.selectedColor})`;
+
+            return `• ${item.name}${colorDisplay} - ${item.quantity} × ₦${Number(item.price).toFixed(
+              2
+            )} = ₦${(Number(item.price) * item.quantity).toFixed(2)}`;
+          })
           .join("\n")}\n\n💰 *Total:* ₦${subtotal.toFixed(2)}`
     );
 
-    const whatsappNumber = "2348012345678"; // your number
+    const whatsappNumber = "+233202651646"; // your WhatsApp number
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(whatsappLink, "_blank");
   };
@@ -70,6 +68,12 @@ export default function CheckoutModal({ cartItems, subtotal, onClose }) {
       onClose();
     }
   };
+
+  // Extract available colors (for single product)
+  const availableColors =
+    isSingle && cartItems.length === 1 && cartItems[0].colors
+      ? cartItems[0].colors
+      : [];
 
   return (
     <AnimatePresence>
@@ -98,7 +102,31 @@ export default function CheckoutModal({ cartItems, subtotal, onClose }) {
             🛍️ Checkout Information
           </h2>
 
-          {/* Form */}
+          {/* Color Selection (Single Product Only) */}
+          {isSingle && availableColors.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
+                Select Preferred Color:
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {availableColors.map((color, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedColor(color)}
+                    className={`px-4 py-2 rounded-xl border transition-all ${
+                      selectedColor === color
+                        ? "bg-pink-600 text-white border-pink-600"
+                        : "border-gray-300 text-gray-700 dark:text-gray-200"
+                    }`}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Checkout Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid gap-4">
               <input
@@ -150,20 +178,20 @@ export default function CheckoutModal({ cartItems, subtotal, onClose }) {
 
               <button
                 type="submit"
-                className="px-5 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all shadow-md"
+                disabled={isSingle && availableColors.length > 0 && !selectedColor}
+                className="px-5 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Send via WhatsApp
               </button>
             </div>
           </form>
 
-          {/* Confirm Close Popup */}
+          {/* Confirm Close Modal */}
           {confirmClose && (
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center rounded-3xl">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl text-center shadow-lg w-11/12 max-w-sm">
                 <p className="text-gray-800 dark:text-white mb-4 font-medium">
-                  Are you sure you want to close? Your entered data will be
-                  saved for next time.
+                  Are you sure you want to close? Your entered data will be saved for next time.
                 </p>
                 <div className="flex justify-center gap-4">
                   <button

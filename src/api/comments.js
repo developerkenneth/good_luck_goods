@@ -1,7 +1,7 @@
 
 export async function fetchCommentsByProduct(productId) {
   try {
-    const res = await fetch(`http://localhost:8000/api/comments/product/${productId}`);
+    const res = await fetch(`http://127.0.0.1:8000/api/comments/product/${productId}`);
     if (!res.ok) throw new Error("Failed to fetch comments");
     const data = await res.json();
     return data.comments || data; // Adjust based on your API response
@@ -11,27 +11,19 @@ export async function fetchCommentsByProduct(productId) {
   }
 }
 
-export async function postComments(data){
-  const url = "http://localhost:8000/api/comments/";
-  try{
-      
-      const res = await fetch(url, {
-        method: "POST",
-        headers : {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+export async function postComments(data) {
+  const url = "http://127.0.0.1:8000/api/comments";
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      body: data, // 👈 no headers — browser sets multipart automatically
+    });
 
-      if(!res.ok) throw new Error(`An error occured: ${res.status}`);
-
-      const result = await res.json();
-      return result ;
-
-  }catch(e){
-
-    console.error(e);
-    return [];
-    
+    const result = await res.json();
+    return result;
+  } catch (e) {
+    console.error("Error posting comment:", e);
+    return { success: false, message: e.message };
   }
 }
+

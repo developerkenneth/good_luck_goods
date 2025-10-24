@@ -75,7 +75,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-gray-300 dark:border-gray-700 mt-10 pt-4 text-center text-sm">
-        © {new Date().getFullYear()} <span className="text-primary font-semibold">Goodluck Goods</span>. All rights reserved.
+        © {new Date().getFullYear()} <span className="text-primary font-semibold">Goodlucks Goods</span>. All rights reserved.
       </div>
     </footer>
   );

@@ -17,7 +17,7 @@ export default function CategoryGrid() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/categories");
+        const res = await fetch("https://goodlucks.emethsoftwares.com.ng/api/categories");
         const data = await res.json();
         setCategories(data.categories);
       } catch (err) {
@@ -74,7 +74,7 @@ export default function CategoryGrid() {
             return (
               <Link
                 key={cat.id}
-                to={`/category/${cat.slug || cat.name?.toLowerCase()}`}
+                to={`/category/${cat.slug}`}
                 className="flex flex-col items-center gap-2 text-sm font-medium text-gray-700 dark:text-white hover:text-primary transition"
               >
                 <div className="w-24 h-24 bg-white dark:bg-gray-800 rounded-full shadow-md flex items-center justify-center overflow-hidden border border-gray-200 dark:border-gray-700 group hover:shadow-lg transition-all duration-300">

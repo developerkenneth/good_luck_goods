@@ -8,7 +8,7 @@ const AllProducts = ({products}) => {
             Products
         </h2>
 
-        <div className="py-6 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4  gap-6 font-p">
+        <div className="py-6 w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6 font-p">
           {products.map((product) => (
             <div
               key={product.id}

@@ -33,30 +33,6 @@ export default function ContactUs() {
         </div>
       </div>
 
-      {/* Contact Form */}
-      <form className="max-w-xl mx-auto bg-white dark:bg-gray-800 rounded-xl  p-6 space-y-4 transition-transform hover:shadow-xl hover:scale-[1.01]">
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-sm dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary"
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-sm dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary"
-        />
-        <textarea
-          rows="4"
-          placeholder="Your Message"
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-sm dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary"
-        ></textarea>
-        <button
-          type="submit"
-          className="bg-primary hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-lg transition-transform hover:scale-105"
-        >
-          Send Message
-        </button>
-      </form>
 
       {/* Social Media Icons */}
       <div className="mt-10 flex justify-center gap-6 text-xl text-gray-600 dark:text-gray-300">

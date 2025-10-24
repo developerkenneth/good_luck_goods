@@ -21,7 +21,7 @@ export default function TopNavbar() {
   };
 
   return (
-    <nav className="w-full font-p bg-white dark:bg-dark border-b rounded-md border-gray-200 dark:border-gray-700 px-4 py-3">
+    <nav className="w-full font-p bg-white dark:dark:bg-gray-800 border-b rounded-md border-gray-200 dark:border-gray-700 px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 mb-4">
         {/* Logo */}
         <div className="text-xl font-bold text-brand-primary">

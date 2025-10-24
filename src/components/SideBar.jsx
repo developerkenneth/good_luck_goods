@@ -43,7 +43,7 @@ const SideBar = () => {
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-light dark:border-gray-700">
-          {isExpanded && <h1 className="font-bold text-lg font-header">Goodluck Goods</h1>}
+          {isExpanded && <h1 className="font-bold text-lg font-header">Goodlucks<span className="text-primary">.com</span><span className="text-accent">.gh</span></h1>}
           <button onClick={toggleSidebar} className="text-xl text-dark cursor-pointer dark:text-light">
             <FaBars />
           </button>

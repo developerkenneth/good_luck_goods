@@ -1,5 +1,5 @@
 async function fetchCategories() {
-  const url = `http://127.0.0.1:8000/api/categories`;
+  const url = `https://goodlucks.emethsoftwares.com.ng/api/categories`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

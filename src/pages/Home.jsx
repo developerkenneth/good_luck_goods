@@ -1,6 +1,6 @@
-import TopNavbar from "../components/TopNavBar";
 import Hero from "../components/Hero";
 import FeaturedCarousel from "../components/FeaturedCarousel";
+import Footer from "../components/Footer";
 import CategoryGrid from "../components/CategoryGrid";
 import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
@@ -16,9 +16,13 @@ const Home = () => {
       {loading ? (
         <Spinners loading={loading} />
       ) : (
-        <FeaturedCarousel products={filteredProducts.filter(p => p.featured)} />
+        <FeaturedCarousel
+          products={filteredProducts.filter((p) => p.featured)}
+        />
       )}
       <CategoryGrid />
+
+      <Footer />
     </>
   );
 };
