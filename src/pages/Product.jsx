@@ -6,7 +6,6 @@ import { CartContext } from "../context/CartContext";
 import CommentsSection from "../components/CommentsSection";
 import CheckoutModal from "../components/CheckoutModal";
 import ProductModal from "../components/ProductModal";
-import ProductRatingSummary from "../components/ProductRatingSummary";
 
 
 const Product = () => {
@@ -23,7 +22,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/products/${slug}`);
+        const res = await fetch(`https://goodlucks.emethsoftwares.com.ng/api/products/${slug}`);
         if (!res.ok) throw new Error("Failed to fetch product");
         const data = await res.json();
         setProduct(data);
@@ -72,7 +71,7 @@ const Product = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl lg:mx-auto lg:px-4 py-10">
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
@@ -83,12 +82,12 @@ const Product = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Image Slider */}
-        <div className="w-full">
+        <div>
           <Slider {...settings} className="rounded-2xl overflow-hidden shadow-lg">
             {images.map((img, index) => (
               <div key={index}>
                 <img
-                  src={`http://127.0.0.1:8000/storage/${img}`}
+                  src={`https://goodlucks.emethsoftwares.com.ng/storage/${img}`}
                   alt={product.name}
                   className="w-full h-[400px] object-cover"
                 />

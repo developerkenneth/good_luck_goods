@@ -5,6 +5,7 @@ import {
   FaShoppingCart,
   FaSun,
   FaMoon,
+  FaBookOpen,
 } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { useState, useEffect, useContext } from "react";
@@ -35,7 +36,9 @@ export default function MobileBottomNav() {
     { to: "/", label: "Home", icon: <FaHome /> },
     { to: "/shop", label: "Shop", icon: <FaThLarge /> },
     { to: "/cart", label: "Cart", icon: <FaShoppingCart /> },
-    { to: "/contact", label: "Contact", icon: <FaPhone /> },
+    { to: "/categories", label: "categories", icon: <FaBookOpen /> },
+    { to: "/contact", label: "Contact", icon: <FaPhone /> }
+
   ];
 
   return (

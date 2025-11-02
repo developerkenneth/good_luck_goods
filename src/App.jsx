@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import Category from "./pages/Category";
 import ScrollToTop from "./components/ScrollToTop";
+import ShowCats from "./pages/ShowCats";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/categories" element={<ShowCats />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:slug" element={<Product />} />

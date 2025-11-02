@@ -1,5 +1,5 @@
 export default async function fetchProducts() {
-  const url = `http://127.0.0.1:8000/api/products`;
+  const url = `https://goodlucks.emethsoftwares.com.ng/api/products`;
   try {
     const response = await fetch(url);
 

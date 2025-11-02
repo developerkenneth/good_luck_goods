@@ -149,6 +149,7 @@ export default function CheckoutModal({ cartItems, subtotal, onClose, isSingle =
               />
               <input
                 type="tel"
+                min={10}
                 name="phone"
                 placeholder="Phone Number"
                 value={form.phone}

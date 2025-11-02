@@ -37,7 +37,7 @@ export default function Cart() {
                 className="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm hover:shadow-md transition-transform hover:scale-[1.01]"
               >
                 <img
-                  src={`http://127.0.0.1:8000/storage/${item.main_image}`}
+                  src={`https://goodlucks.emethsoftwares.com.ng/storage/${item.main_image}`}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded"
                 />

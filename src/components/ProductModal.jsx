@@ -88,7 +88,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
               <img
                 src={
                   product.main_image
-                    ? `http://127.0.0.1:8000/storage/${product.main_image}`
+                    ? `https://goodlucks.emethsoftwares.com.ng/storage/${product.main_image}`
                     : "https://via.placeholder.com/300x200?text=No+Image"
                 }
                 alt={product.name}

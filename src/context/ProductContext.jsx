@@ -56,7 +56,6 @@ function GlobalState({ children }) {
 
     const matchesCategory =
       selectedCategory === "" || product?.category_id === selectedCategory;
-
     return matchesSearch && matchesCategory;
   });
 

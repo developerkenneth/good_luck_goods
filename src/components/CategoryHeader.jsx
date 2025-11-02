@@ -1,30 +1,34 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { ChevronDown, Tags } from "lucide-react";
 import { ProductContext } from "../context/ProductContext";
+import toast from "react-hot-toast";
 
 export default function CategoryHeader({ category, subCategories = [] }) {
-
-  const [selectedSub, setSelectedSub] = useState({ id: "all", name: "All"});
+  const [selectedSub, setSelectedSub] = useState({ id: "all", name: "All" });
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const { products, setProducts } = useContext(ProductContext);
-  const prevProducts = [...products] ;
-
+  const prevProducts = [...products];
 
   useEffect(() => {
     function handleSubCatFiltered() {
+      if (selectedSub.id !== "all") {
 
-      if(selectedSub.id !== "all"){
-        const filteredProducts =  products.map( (product) =>{
-            if(product.subcategory_id == selectedSub.id) return product;
-        })
+        const filteredProducts = products.filter((product) => {
+          if (product.subcategory_id == selectedSub.id) return product;
+        });
 
-        setProducts(filteredProducts);
-      }else{
-          setProducts(prevProducts);
+        if (filteredProducts.length > 0) {
+          console.log(filteredProducts);
+          setProducts(filteredProducts);
+          toast.custom("sub category filter completed");
+        }else{
+          toast.error("oops no products in that sub category");
+        }
+      } else {
+        setProducts(prevProducts);
       }
-       
     }
 
     handleSubCatFiltered();
@@ -85,7 +89,7 @@ export default function CategoryHeader({ category, subCategories = [] }) {
                 <li
                   className="px-4 py-2 hover:bg-pink-50 dark:hover:bg-gray-700 cursor-pointer text-gray-800 dark:text-gray-100"
                   onClick={() => {
-                    setSelectedSub({id:"all", name: "All"});
+                    setSelectedSub({ id: "all", name: "All" });
                     setOpen(false);
                   }}
                 >
@@ -96,7 +100,7 @@ export default function CategoryHeader({ category, subCategories = [] }) {
                     key={sub.id}
                     className="px-4 py-2 hover:bg-pink-50 dark:hover:bg-gray-700 cursor-pointer text-gray-800 dark:text-gray-100"
                     onClick={() => {
-                      setSelectedSub({id:sub.id, name : sub.name});
+                      setSelectedSub({ id: sub.id, name: sub.name });
                       setOpen(false);
                     }}
                   >

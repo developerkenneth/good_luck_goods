@@ -21,7 +21,8 @@ export default function Hero() {
               Shop Now
             </Link>
             <Link
-              to="/categories"
+              to="+233202651646"
+              target="_blank"
               className="border border-primary text-primary px-6 py-3 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition"
             >
               Contact Us

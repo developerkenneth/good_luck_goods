@@ -24,7 +24,7 @@ export default function CommentSection({ productId }) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="mt-10  dark:bg-gray-800 p-6 rounded-2xl">
+    <div className="mt-10  dark:bg-gray-800 p-6 lg:px-10 rounded-2xl">
     
 
       {loading ? (

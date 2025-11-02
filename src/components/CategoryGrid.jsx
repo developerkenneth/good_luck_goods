@@ -44,7 +44,7 @@ export default function CategoryGrid() {
   const Skeleton = () => (
     <div className="animate-pulse flex flex-col items-center gap-2">
       <div className="w-24 h-24 rounded-full bg-gray-200 dark:bg-gray-700"></div>
-      <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
+      <div className="h-96  bg-gray-200 dark:bg-gray-700 rounded"></div>
     </div>
   );
 

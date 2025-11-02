@@ -14,8 +14,8 @@ export default function Category() {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    async function fetchCategoryDetails(params) {
-      const url = `http://127.0.0.1:8000/api/category/${slug}`;
+    async function fetchCategoryDetails() {
+      const url = `https://goodlucks.emethsoftwares.com.ng/api/category/${slug}`;
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`Error status ${res.status}`);

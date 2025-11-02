@@ -113,8 +113,8 @@ export default function AddCommentForm({ productId }) {
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-900 dark:text-white"
-        pattern="[0-9]{11}"
-        title="Enter a valid 11-digit phone number"
+        pattern="[0-9]{10}"
+        title="Enter a valid 10-digit phone number"
         required
       />
 

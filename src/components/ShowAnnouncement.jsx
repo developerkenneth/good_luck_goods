@@ -14,7 +14,8 @@ const ShowAnnouncement = ({
     async function loadAnnouncement() {
       try {
         const result = await fetchAnnouncement();
-        setAnnouncement(result?.data);
+        result.data? setAnnouncement(result?.data) : setAnnouncement([]);
+        
       } catch (e) {
         console.error(e);
       }
@@ -26,6 +27,13 @@ const ShowAnnouncement = ({
     loadAnnouncement();
   }, []);
 
+    let message = "welcome to good luck goods";
+
+    if(!loading && announcement.message){
+        message = announcement.message;
+    }
+    
+
   // ✅ Conditional return AFTER all hooks
   if (!visible) return null;
 
@@ -36,9 +44,9 @@ const ShowAnnouncement = ({
         style={{ animationDuration: `${speed}s` }}
       >
         <span className={`${textColor} inline-block font-medium`}>
-          { !loading && `🚀${announcement.message}🚀`}&nbsp;
-          { !loading && `🚀${announcement.message}🚀`}&nbsp;
-          { !loading && `🚀${announcement.message}🚀`}
+          {  `🚀${message}🚀`}&nbsp;
+          {  `🚀${message}🚀`}&nbsp;
+          {  `🚀${message}🚀`}&nbsp;
         </span>
       </div>
       <button

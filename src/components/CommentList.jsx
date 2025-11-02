@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function CommentList({ comments = [] }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const BASE_URL = "http://127.0.0.1:8000/storage/"; // 👈 Laravel public storage base URL
+  const BASE_URL = "https://goodlucks.emethsoftwares.com.ng/storage/"; // 👈 Laravel public storage base URL
 
   const maskPhone = (phone) =>
     phone?.replace(/(\d{4})\d{4}(\d{3,})/, "$1****$2") || "Unknown";
@@ -62,7 +62,7 @@ export default function CommentList({ comments = [] }) {
   };
 
   return (
-    <div className="w-full border border-gray-200 dark:border-gray-700 rounded-lg mb-6 bg-white dark:bg-gray-800 p-4">
+    <div className="w-full dark:border-gray-700 rounded-lg mb-6 bg-white dark:bg-gray-800 ">
       <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-100 mb-4">
         Customer Comments
       </h3>
@@ -134,16 +134,18 @@ export default function CommentList({ comments = [] }) {
 
                 {/* Comment photos */}
                 {photos.length > 0 && (
-                  <div className="flex gap-3 flex-wrap mb-3 border-t border-gray-200 pt-6">
-                    {photos.slice(0, 6).map((src, index) => (
-                      <img
-                        key={index}
-                        src={src}
-                        alt={`Comment photo ${index + 1}`}
-                        className="w-24 h-24 object-cover rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer hover:opacity-80 transition"
-                        onClick={() => setSelectedImage(src)}
-                      />
-                    ))}
+                  <div className="">
+                    <div className="flex gap-3 flex-wrap mb-3 border-t border-gray-200 pt-6">
+                      {photos.slice(0, 6).map((src, index) => (
+                        <img
+                          key={index}
+                          src={src}
+                          alt={`Comment photo ${index + 1}`}
+                          className="w-24 h-24 object-cover rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer hover:opacity-80 transition"
+                          onClick={() => setSelectedImage(src)}
+                        />
+                      ))}
+                    </div>
                   </div>
                 )}
 

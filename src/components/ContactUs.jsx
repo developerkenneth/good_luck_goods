@@ -18,7 +18,7 @@ export default function ContactUs() {
       {/* WhatsApp + Contact Info */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-10">
         <a
-          href="https://wa.me/2348012345678"
+          href="https://wa.me/+233202651646"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-full transition-transform hover:scale-105"

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
 import logo from "../assets/images/logo.png";
 import { ProductContext } from "../context/ProductContext";
+import toast from "react-hot-toast";
 
 export default function TopNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,6 @@ export default function TopNavbar() {
 
   const handleSearch = (e) => {
     setSearchKey(e.target.value);
-    console.log("Searching:", e.target.value);
   };
 
   return (
@@ -71,6 +71,7 @@ export default function TopNavbar() {
                     onClick={() => {
                       setSelectedCategory(cat.id);
                       setIsOpen(false);
+                      toast.success("filter completed");
                     }}
                   >
                     {cat.name}
