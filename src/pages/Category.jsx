@@ -4,7 +4,7 @@ import CategoryHeader from "../components/CategoryHeader";
 import AllProducts from "../components/AllProducts";
 import Spinners from "../components/Spinners";
 import GlobalState, { ProductContext } from "../context/ProductContext";
-
+import SEO from "../components/SEO";
 
 export default function Category() {
   const { slug } = useParams();
@@ -36,6 +36,13 @@ export default function Category() {
 
   return (
     <>
+      <SEO
+        title="Shop by Categories – Goodlucks Goods"
+        description="Browse all product categories including phones, electronics, fashion, and more. Find quality items at the best prices in Ghana."
+        keywords="categories, product categories, online shopping Ghana, goodlucks goods"
+        url="https://shop.goodlucks.co/categories"
+      />
+
       {/* category header */}
       <CategoryHeader category={category} subCategories={subCategories} />
 

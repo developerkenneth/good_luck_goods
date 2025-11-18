@@ -7,6 +7,7 @@ import CommentsSection from "../components/CommentsSection";
 import CheckoutModal from "../components/CheckoutModal";
 import ProductModal from "../components/ProductModal";
 import CopyRight from "../components/CopyRight";
+import SEO from "../components/SEO";
 
 const Product = () => {
   const { slug } = useParams();
@@ -66,6 +67,16 @@ const Product = () => {
 
   return (
     <>
+      <SEO
+        title={`${product.name} – Buy Now at Goodluck Goods`}
+        description={
+          product.description ||
+          `Buy ${product.name} at an affordable price. Fast delivery in Ghana.`
+        }
+        keywords={`${product.name}, ${product.category}, buy ${product.name}, goodluck goods`}
+        url={`https://shop.goodlucks.co/product/${product.slug}`}
+      />
+
       <div className="max-w-6xl lg:mx-auto lg:px-4 py-10">
         {/* Back Button */}
         <button

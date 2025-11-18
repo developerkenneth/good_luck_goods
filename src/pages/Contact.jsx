@@ -1,13 +1,15 @@
-import TopNavbar from "../components/TopNavBar";
 import MobileBottomNav from "../components/MobileBottomNav";
-import Hero from "../components/Hero";
 import ContactUs from "../components/ContactUs";
 import FAQContainer from "../components/FAQContainer";
+import SEO from "../components/SEO";
 const Contact = () => {
   return (
     <>
-      {/* <Hero /> */}
-
+      <SEO
+        title={"Affordable Quality Products in Ghana"}
+        description={`Contact Goodlucks for the best quality products in Ghana`}
+        keywords={`contact us, reach us, on whatsapp`}
+      />
       <MobileBottomNav />
       <ContactUs />
       <FAQContainer />
