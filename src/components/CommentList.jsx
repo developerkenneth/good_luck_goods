@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function CommentList({ comments = [] }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const BASE_URL = "https://goodlucks.emethsoftwares.com.ng/storage/"; // 👈 Laravel public storage base URL
+  const BASE_URL = "https://admin.shop.goodlucks.co/storage/"; // 👈 Laravel public storage base URL
 
   const maskPhone = (phone) =>
     phone?.replace(/(\d{4})\d{4}(\d{3,})/, "$1****$2") || "Unknown";
@@ -107,18 +107,25 @@ export default function CommentList({ comments = [] }) {
                         {comment.name?.toUpperCase() || "Anonymous"}
                       </p>
                       {comment.verified && (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 h-4 text-primary"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414L9 13.414l4.707-4.707z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <div className="relative group">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4 text-primary cursor-pointer"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414L9 13.414l4.707-4.707z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+
+                          {/* Tooltip */}
+                          <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1 text-xs font-medium text-white bg-gray-900 rounded-md opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-300 whitespace-nowrap">
+                            ✅ Verified Buyer (No Filter)
+                          </span>
+                        </div>
                       )}
                     </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400">

@@ -10,7 +10,7 @@ export default function FeaturedCarousel({ products }) {
       </h2>
 
       {hasProducts ? (
-        <div className="py-6 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="py-6 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <div
               key={product.id}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function ProductModal({ product, onClose, onAddToCart }) {
   const [selectedColor, setSelectedColor] = useState("");
@@ -88,7 +88,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
               <img
                 src={
                   product.main_image
-                    ? `https://goodlucks.emethsoftwares.com.ng/storage/${product.main_image}`
+                    ? `https://admin.shop.goodlucks.co/storage/${product.main_image}`
                     : "https://via.placeholder.com/300x200?text=No+Image"
                 }
                 alt={product.name}

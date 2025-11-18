@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryHeader from "../components/CategoryHeader";
 import AllProducts from "../components/AllProducts";
@@ -8,14 +8,14 @@ import GlobalState, { ProductContext } from "../context/ProductContext";
 
 export default function Category() {
   const { slug } = useParams();
-  const {products, setProducts} = useContext(ProductContext);
+  const [products, setProducts] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
     async function fetchCategoryDetails() {
-      const url = `https://goodlucks.emethsoftwares.com.ng/api/category/${slug}`;
+      const url = `https://admin.shop.goodlucks.co/api/category/${slug}`;
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`Error status ${res.status}`);

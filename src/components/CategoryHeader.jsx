@@ -20,7 +20,6 @@ export default function CategoryHeader({ category, subCategories = [] }) {
         });
 
         if (filteredProducts.length > 0) {
-          console.log(filteredProducts);
           setProducts(filteredProducts);
           toast.custom("sub category filter completed");
         }else{

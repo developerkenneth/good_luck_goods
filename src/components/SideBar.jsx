@@ -8,6 +8,7 @@ import {
   FaThLarge,
   FaShoppingCart,
   FaPhone,
+  FaBookOpen,
 } from "react-icons/fa";
 import { CartContext } from "../context/CartContext"; // ✅ import the Cart Context
 
@@ -43,16 +44,40 @@ const SideBar = () => {
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-light dark:border-gray-700">
-          {isExpanded && <h1 className="font-bold text-lg font-header">Goodlucks<span className="text-primary">.com</span><span className="text-accent">.gh</span></h1>}
-          <button onClick={toggleSidebar} className="text-xl text-dark cursor-pointer dark:text-light">
+          {isExpanded && (
+            <h1 className="font-bold text-lg font-header">
+              shop.<span className="text-primary">goodlucks</span>
+              <span className="text-accent">.co</span>
+            </h1>
+          )}
+          <button
+            onClick={toggleSidebar}
+            className="text-xl text-dark cursor-pointer dark:text-light"
+          >
             <FaBars />
           </button>
         </div>
 
         {/* Links */}
         <nav className="flex-1 mt-4 space-y-1 font-p">
-          <SidebarLink to="/" icon={<FaHome />} label="Home" isExpanded={isExpanded} />
-          <SidebarLink to="/shop" icon={<FaThLarge />} label="Shop" isExpanded={isExpanded} />
+          <SidebarLink
+            to="/"
+            icon={<FaHome />}
+            label="Home"
+            isExpanded={isExpanded}
+          />
+          <SidebarLink
+            to="/shop"
+            icon={<FaThLarge />}
+            label="Shop"
+            isExpanded={isExpanded}
+          />
+          <SidebarLink
+            to="/categories"
+            icon={<FaBookOpen />}
+            label="Categories"
+            isExpanded={isExpanded}
+          />
 
           {/* 🛒 Cart Link with Badge */}
           <SidebarLink
@@ -74,7 +99,12 @@ const SideBar = () => {
             isExpanded={isExpanded}
           />
 
-          <SidebarLink to="/contact" icon={<FaPhone />} label="Contact" isExpanded={isExpanded} />
+          <SidebarLink
+            to="/contact"
+            icon={<FaPhone />}
+            label="Contact"
+            isExpanded={isExpanded}
+          />
 
           {/* User + Theme */}
           <div className="px-4 py-3 border-t border-light dark:border-gray-700">
@@ -82,8 +112,12 @@ const SideBar = () => {
               onClick={toggleDarkMode}
               className="flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md w-full mb-3"
             >
-              <span className="text-xl">{darkMode ? <FaSun /> : <FaMoon />}</span>
-              {isExpanded && <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>}
+              <span className="text-xl">
+                {darkMode ? <FaSun /> : <FaMoon />}
+              </span>
+              {isExpanded && (
+                <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+              )}
             </button>
           </div>
         </nav>
@@ -98,7 +132,9 @@ function SidebarLink({ to, icon, label, isExpanded }) {
       to={to}
       className={({ isActive }) =>
         `flex items-center gap-4 px-4 py-3 hover:bg-pink-100 dark:hover:bg-gray-700 transition-colors ${
-          isActive ? "bg-pink-200 text-primary dark:bg-gray-700 font-semibold" : ""
+          isActive
+            ? "bg-pink-200 text-primary dark:bg-gray-700 font-semibold"
+            : ""
         }`
       }
       title={!isExpanded ? label : ""}

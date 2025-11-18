@@ -37,7 +37,7 @@ export default function Cart() {
                 className="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm hover:shadow-md transition-transform hover:scale-[1.01]"
               >
                 <img
-                  src={`https://goodlucks.emethsoftwares.com.ng/storage/${item.main_image}`}
+                  src={`https://admin.shop.goodlucks.co/storage/${item.main_image}`}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded"
                 />
@@ -45,7 +45,7 @@ export default function Cart() {
                 <div className="flex-1">
                   <h2 className="text-lg font-semibold">{item.name}</h2>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                    ₦{Number(item.price).toLocaleString()} each
+                    GHS {Number(item.price).toLocaleString()} each
                   </p>
 
                   {/* 🔹 Color Selection */}
@@ -117,7 +117,7 @@ export default function Cart() {
             <h2 className="text-xl font-bold mb-2">Order Summary</h2>
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>₦{Number(cartTotal).toLocaleString()}</span>
+              <span>GHS {Number(cartTotal).toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
               <span>Payment</span>
@@ -126,7 +126,7 @@ export default function Cart() {
             <hr className="my-2 border-gray-300 dark:border-gray-600" />
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>₦{Number(cartTotal).toLocaleString()}</span>
+              <span>GHS {Number(cartTotal).toLocaleString()}</span>
             </div>
 
             <button

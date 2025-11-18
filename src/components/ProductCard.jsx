@@ -16,7 +16,7 @@ export default function ProductCard({ product }) {
   const stock = getStockStatus(parseInt(product.stock) || 0);
 
   const formatCurrency = (amount) =>
-    `₦${parseFloat(amount || 0).toLocaleString()}`;
+    `GHS ${parseFloat(amount || 0).toLocaleString()}`;
 
   const hasDiscount =
     product.discount_percentage && parseFloat(product.discount_percentage) > 0;
@@ -40,7 +40,7 @@ export default function ProductCard({ product }) {
             <img
               src={
                 product.main_image
-                  ? `https://goodlucks.emethsoftwares.com.ng/storage/${product.main_image}`
+                  ? `https://admin.shop.goodlucks.co/storage/${product.main_image}`
                   : "https://via.placeholder.com/300x200?text=No+Image"
               }
               alt={product.name}

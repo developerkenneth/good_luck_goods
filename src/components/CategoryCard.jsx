@@ -11,7 +11,7 @@ const CategoryCard = ({ category }) => {
       <img
         src={
           category.image
-            ? `https://goodlucks.emethsoftwares.com.ng/storage/${category.image}`
+            ? `https://admin.shop.goodlucks.co/storage/${category.image}`
             : "/placeholder.jpg"
         }
         alt={category.name}

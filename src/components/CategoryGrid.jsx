@@ -17,7 +17,7 @@ export default function CategoryGrid() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("https://goodlucks.emethsoftwares.com.ng/api/categories");
+        const res = await fetch("https://admin.shop.goodlucks.co/api/categories");
         const data = await res.json();
         setCategories(data.categories);
       } catch (err) {

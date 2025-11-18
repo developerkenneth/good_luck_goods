@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 export default function CheckoutModal({ cartItems, subtotal, onClose, isSingle = false }) {
@@ -52,7 +52,7 @@ export default function CheckoutModal({ cartItems, subtotal, onClose, isSingle =
 
     const whatsappNumber = "+233202651646"; // your WhatsApp number
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(whatsappLink, "_blank");
+    window.open(whatsappLink, "_self");
   };
 
   const handleClose = () => {

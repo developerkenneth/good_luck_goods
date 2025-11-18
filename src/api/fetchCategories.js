@@ -1,5 +1,5 @@
 async function fetchCategories() {
-  const url = `https://goodlucks.emethsoftwares.com.ng/api/categories`;
+  const url = `https://admin.shop.goodlucks.co/api/categories`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

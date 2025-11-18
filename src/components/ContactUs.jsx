@@ -1,9 +1,8 @@
 import {
   FaFacebookF,
-  FaTwitter,
-  FaTiktok,
   FaInstagram,
   FaWhatsapp,
+  FaTwitter
 } from "react-icons/fa";
 
 export default function ContactUs() {
@@ -28,8 +27,8 @@ export default function ContactUs() {
         </a>
 
         <div className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
-          <p><strong>Phone:</strong> +234 801 234 5678</p>
-          <p><strong>Email:</strong> info@example.com</p>
+          <p><strong>Phone:</strong> +233 202 651 646</p>
+          <p><strong>Email:</strong> info@goodlucks.co</p>
         </div>
       </div>
 
@@ -37,32 +36,32 @@ export default function ContactUs() {
       {/* Social Media Icons */}
       <div className="mt-10 flex justify-center gap-6 text-xl text-gray-600 dark:text-gray-300">
         <a
-          href="https://facebook.com"
+          href="https://www.facebook.com/GoodlucksGoods"
           target="_blank"                                                                
           rel="noopener noreferrer"
           className="hover:text-brand-primary transition-transform hover:scale-125"
         >
           <FaFacebookF />
         </a>
-        <a
+        {/* <a
           href="https://twitter.com"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-brand-primary transition-transform hover:scale-125"
         >
           <FaTwitter />
-        </a>
-        <a
+        </a> */}
+        {/* <a
           href="https://tiktok.com"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-brand-primary transition-transform hover:scale-125"
         >
           <FaTiktok />
-        </a>
+        </a> */}
         <a
-          href="https://instagram.com"
-          target="_blank"
+          href="https://www.instagram.com/goodlucksgoods/"
+          target="_self"
           rel="noopener noreferrer"
           className="hover:text-brand-primary transition-transform hover:scale-125"
         >

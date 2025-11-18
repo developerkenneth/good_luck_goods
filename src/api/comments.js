@@ -1,7 +1,7 @@
 
 export async function fetchCommentsByProduct(productId) {
   try {
-    const res = await fetch(`https://goodlucks.emethsoftwares.com.ng/api/comments/product/${productId}`);
+    const res = await fetch(`https://admin.shop.goodlucks.co/api/comments/product/${productId}`);
     if (!res.ok) throw new Error("Failed to fetch comments");
     const data = await res.json();
     return data.comments || data; // Adjust based on your API response
@@ -12,7 +12,7 @@ export async function fetchCommentsByProduct(productId) {
 }
 
 export async function postComments(data) {
-  const url = "https://goodlucks.emethsoftwares.com.ng/api/comments";
+  const url = "https://admin.shop.goodlucks.co/api/comments";
   try {
     const res = await fetch(url, {
       method: "POST",

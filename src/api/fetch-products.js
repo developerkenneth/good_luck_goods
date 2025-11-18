@@ -1,5 +1,5 @@
 export default async function fetchProducts() {
-  const url = `https://goodlucks.emethsoftwares.com.ng/api/products`;
+  const url = `https://admin.shop.goodlucks.co/api/products`;
   try {
     const response = await fetch(url);
 

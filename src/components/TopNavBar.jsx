@@ -56,7 +56,7 @@ export default function TopNavbar() {
             className="flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-white hover:text-brand-primary"
             disabled={catLoading} // disable while loading
           >
-            {catLoading ? "Loading..." : "Categories"}{" "}
+            {catLoading ? "Loading..." : "Categories"}
             <FaChevronDown className="text-xs" />
           </button>
 
@@ -64,6 +64,14 @@ export default function TopNavbar() {
           {isOpen && !catLoading && categories.length > 0 && (
             <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700 z-50">
               <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                <li
+                 className="px-4 py-2 hover:bg-brand-light dark:hover:bg-brand-dark/70 cursor-pointer"
+                 onClick={() => {
+                      setSelectedCategory("");
+                      setIsOpen(false);
+                      toast.success("filter completed");
+                    }}
+                 >All</li>
                 {categories.map((cat) => (
                   <li
                     key={cat.id}

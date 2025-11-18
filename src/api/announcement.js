@@ -1,5 +1,5 @@
 export default async function fetchAnnouncement() {
-  const url = `https://goodlucks.emethsoftwares.com.ng/api/announcement/latest`;
+  const url = `https://admin.shop.goodlucks.co/api/announcement/latest`;
   try {
     const response = await fetch(url);
 

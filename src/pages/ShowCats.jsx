@@ -11,7 +11,7 @@ export default function ShowCats() {
     const fetchCategories = async () => {
       try {
         const res = await fetch(
-          "https://goodlucks.emethsoftwares.com.ng/api/categories"
+          "https://admin.shop.goodlucks.co/api/categories"
         );
         const data = await res.json();
         setCategories(data.categories);
