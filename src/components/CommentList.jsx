@@ -2,6 +2,13 @@ import React, { useState } from "react";
 
 export default function CommentList({ comments = [] }) {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showTooltip, setShowTooltip] = useState(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = () => setShowTooltip(null);
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
 
   const BASE_URL = "https://admin.shop.goodlucks.co/storage/"; // 👈 Laravel public storage base URL
 
@@ -107,7 +114,15 @@ export default function CommentList({ comments = [] }) {
                         {comment.name?.toUpperCase() || "Anonymous"}
                       </p>
                       {comment.verified && (
-                        <div className="relative group">
+                        <div
+                          className="relative group"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowTooltip(
+                              showTooltip === comment.id ? null : comment.id
+                            );
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="w-4 h-4 text-primary cursor-pointer"
@@ -122,7 +137,19 @@ export default function CommentList({ comments = [] }) {
                           </svg>
 
                           {/* Tooltip */}
-                          <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1 text-xs font-medium text-white bg-gray-900 rounded-md opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-300 whitespace-nowrap">
+                          <span
+                            className={`
+                              absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1
+                              text-xs font-medium text-white bg-gray-900 rounded-md
+                              whitespace-nowrap transition-all duration-300
+                              ${
+                                showTooltip === comment.id
+                                  ? "opacity-100 translate-y-0"
+                                  : "opacity-0 translate-y-1"
+                              }
+                              group-hover:opacity-100 group-hover:translate-y-0
+                          `}
+                          >
                             ✅ Verified Buyer (No Filter)
                           </span>
                         </div>
