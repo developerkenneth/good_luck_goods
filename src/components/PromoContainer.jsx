@@ -64,7 +64,7 @@ export default function PromoContainer() {
       {!loading && (
         <PromoPopup
           adContent={adContent}
-          interval={1000 * 60 * 20} 
+          interval={1000 * 60 * 30} 
           initialDelay={5000} // first popup after 5 seconds
         />
       )}
