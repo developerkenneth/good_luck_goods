@@ -88,7 +88,7 @@ export default function Cart() {
 
                   {/* 🔸 Quantity & Remove Controls */}
                   <div className="flex flex-col items-center gap-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col md:flex-row items-center gap-2">
                       <button
                         onClick={() =>
                           updateQuantity(

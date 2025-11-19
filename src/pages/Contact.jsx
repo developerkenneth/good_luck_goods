@@ -12,7 +12,6 @@ const Contact = () => {
       />
       <MobileBottomNav />
       <ContactUs />
-      <FAQContainer />
     </>
   );
 };

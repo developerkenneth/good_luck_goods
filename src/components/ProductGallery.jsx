@@ -16,7 +16,7 @@ const ProductGallery = ({ images }) => {
         <img
           src={`https://admin.shop.goodlucks.co/storage/${current}`}
           alt="Product"
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
         />
         <FaExpand className="absolute top-4 right-4 text-white bg-black/40 p-2 rounded-full text-lg" />
       </div>
@@ -41,7 +41,7 @@ const ProductGallery = ({ images }) => {
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 cursor-zoom-out"
         >
           <img
-            src={`https://goodlucks.emethsoftwares.com.ng/storage/${current}`}
+            src={`https://admin.shop.goodlucks.co/storage/${current}`}
             className="max-h-[90%] max-w-[90%] rounded-xl object-contain"
           />
         </div>

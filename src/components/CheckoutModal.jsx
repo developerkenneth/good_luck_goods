@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
 export default function CheckoutModal({ cartItems, subtotal, onClose, isSingle = false }) {
-
-  console.log(cartItems);
 
   const [form, setForm] = useState({
     name: "",

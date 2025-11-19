@@ -8,6 +8,7 @@ import CheckoutModal from "../components/CheckoutModal";
 import ProductModal from "../components/ProductModal";
 import CopyRight from "../components/CopyRight";
 import SEO from "../components/SEO";
+import FAQContainer from "../components/FAQContainer";
 
 const Product = () => {
   const { slug } = useParams();
@@ -174,7 +175,11 @@ const Product = () => {
             isSingle={true}
           />
         )}
+
+
+              <FAQContainer />
       </div>
+
       <CopyRight />
     </>
   );

@@ -21,7 +21,7 @@ export default function ProductRatingSummary({ comments = [] }) {
   );
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-md space-y-5 mb-6">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md space-y-5 mb-6">
       {/* Average Rating Section */}
       <div className="text-center">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">

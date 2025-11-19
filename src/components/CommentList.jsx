@@ -62,8 +62,8 @@ export default function CommentList({ comments = [] }) {
   };
 
   return (
-    <div className="w-full dark:border-gray-700 rounded-lg mb-6 bg-white dark:bg-gray-800 ">
-      <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-100 mb-4">
+    <div className="w-full  rounded-lg mb-6 bg-white dark:bg-gray-900 ">
+      <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-100 m-4">
         Customer Comments
       </h3>
 
@@ -75,7 +75,7 @@ export default function CommentList({ comments = [] }) {
             return (
               <div
                 key={comment.id}
-                className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 hover:shadow-md transition-all"
+                className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 hover:shadow-md transition-all"
               >
                 {/* Date + Rating */}
                 <div className="flex items-center justify-between mb-6">

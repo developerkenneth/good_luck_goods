@@ -4,13 +4,13 @@ export default function FeaturedCarousel({ products }) {
   const hasProducts = Array.isArray(products) && products.length > 0;
 
   return (
-    <section className="py-10 px-4 font-p">
+    <section className="py-10  font-p">
       <h2 className="text-2xl font-bold mb-4 text-brand-primary font-header">
         Featured Products
       </h2>
 
       {hasProducts ? (
-        <div className="py-6 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="py-6 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map((product) => (
             <div
               key={product.id}

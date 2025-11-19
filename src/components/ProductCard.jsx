@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import ProductModal from "./ProductModal";
+import { FaCartPlus } from "react-icons/fa";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
@@ -9,7 +10,8 @@ export default function ProductCard({ product }) {
 
   const getStockStatus = (qty) => {
     if (qty > 10) return { text: `In stock (${qty})`, color: "text-green-600" };
-    if (qty > 0) return { text: `Low stock (${qty})`, color: "text-yellow-500" };
+    if (qty > 0)
+      return { text: `Low stock (${qty})`, color: "text-yellow-500" };
     return { text: "Out of stock", color: "text-red-500" };
   };
 
@@ -34,18 +36,20 @@ export default function ProductCard({ product }) {
 
   return (
     <>
-      <div className="block w-full max-w-xs bg-white dark:bg-gray-800 dark:bg-brand-dark rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform h-full hover:scale-[1.02]">
+      <div className="block w-full bg-white dark:bg-gray-800 dark:bg-brand-dark rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform h-full hover:scale-[1.02]">
         <div className="relative overflow-hidden group">
           <Link to={`/product/${product.slug}`}>
-            <img
-              src={
-                product.main_image
-                  ? `https://admin.shop.goodlucks.co/storage/${product.main_image}`
-                  : "https://via.placeholder.com/300x200?text=No+Image"
-              }
-              alt={product.name}
-              className="w-full h-56 object-cover transform transition-transform duration-300 group-hover:scale-105"
-            />
+            <div className="p-2">
+              <img
+                src={
+                  product.main_image
+                    ? `https://admin.shop.goodlucks.co/storage/${product.main_image}`
+                    : "https://via.placeholder.com/300x200?text=No+Image"
+                }
+                alt={product.name}
+                className="w-full h-20 lg:h-56 object-contain transform transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
           </Link>
 
           {hasDiscount && (
@@ -62,49 +66,22 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="p-4 space-y-2 dark:bg-gray-800">
-          <h3 className="text-sm font-semibold text-gray-800 dark:text-white truncate">
+          <h3 className="text-xs md:text-lg font-semibold text-gray-800 dark:text-white truncate">
             {product.name}
           </h3>
 
           <div className="flex items-center gap-2">
-            <span className="text-brand-primary font-bold text-lg">
+            <span className="text-brand-primary text-xs md:text-sm  font-bold">
               {formatCurrency(product.actual_price)}
             </span>
             {hasDiscount && (
-              <span className="text-sm line-through text-gray-400 dark:text-gray-500">
+              <span className="text-xs md:text-sm  line-through text-gray-400 dark:text-gray-500">
                 {formatCurrency(product.price)}
               </span>
             )}
           </div>
-
-          <p className={`text-xs font-medium ${stock.color}`}>{stock.text}</p>
-
-          {colors.length > 0 && (
-            <div className="flex items-center gap-2 mt-2">
-              <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">
-                Colors:
-              </span>
-              <div className="flex gap-1">
-                {colors.slice(0, 5).map((color, i) => (
-                  <span
-                    key={i}
-                    title={color.trim()}
-                    className="w-4 h-4 rounded-full border border-gray-300"
-                    style={{ backgroundColor: color.trim() }}
-                  ></span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {product.payment_method && (
-            <p
-              className={`inline-block text-[11px] font-medium px-2 py-1 rounded-full mt-2 ${paymentMethod.color}`}
-            >
-              💳 {paymentMethod.text}
-            </p>
-          )}
-
+        
+          
           <button
             onClick={() => setShowModal(true)}
             disabled={product.stock <= 0}
@@ -114,7 +91,7 @@ export default function ProductCard({ product }) {
                 : "bg-pink-600 text-white hover:bg-accent"
             }`}
           >
-            {product.stock <= 0 ? "Sold Out" : "Add to Cart"}
+            {product.stock <= 0 ? "Sold Out" :  `Add to Cart`}
           </button>
         </div>
       </div>
